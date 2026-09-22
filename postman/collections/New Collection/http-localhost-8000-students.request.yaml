@@ -1,0 +1,14 @@
+$kind: http-request
+name: http://localhost:8000/students
+description: ""
+url: http://localhost:8000/students
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "rollno":125,
+      "name":"raju",
+      "course":"CV"
+    }
+order: 1790059510039
