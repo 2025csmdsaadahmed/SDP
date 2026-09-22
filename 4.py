@@ -67,3 +67,19 @@ def insert_record(student: Student):
         "message": "Record inserted successfully",
         "data": student_record
     }
+@app.put("/student/{student_id}")
+def update_record(student_id:int, student:Student):
+    result = student_collection.update_one({"rollno":student_id},{"$set":student.model_dump()})
+
+    if result is None:
+        raise HTTPException(status_code=404 , detail="Invalid Student ID")
+        return "Record Updated Successfully"
+    
+@app.delete("/student/{student_id}")
+def delete_record(student_id:int):
+    result = student_collection.delete_one({"rollno":student_id})
+    if result is None:
+        raise HTTPException(status_code=404 , detail="Invalid Student ID")
+
+    return "Record deleted Successfully"
+    
